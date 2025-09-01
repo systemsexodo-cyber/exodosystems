@@ -270,13 +270,66 @@
             text-align: center;
         }
 
-        .logo {
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 25px 0;
+            border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container {
+            font-family: 'Arial', sans-serif;
+            font-size: 4rem;
+            font-weight: bold;
+            animation: logoFloat 3s ease-in-out infinite, logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes logoGlow {
+            from { 
+                filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.5));
+                transform: scale(1);
+            }
+            to { 
+                filter: drop-shadow(0 0 25px rgba(255, 107, 53, 0.8));
+                transform: scale(1.05);
+            }
+        }
+
+        .logo-n {
+            color: #ff6b35;
+        }
+
+        .logo-exo {
+            color: white;
+        }
+
+        .logo-nexo {
             font-size: 2rem;
             font-weight: bold;
             color: #ff6b35;
         }
 
         @media (max-width: 768px) {
+            .logo-container {
+                font-size: 3rem;
+            }
+            
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -298,15 +351,17 @@
     </style>
 </head>
 <body>
-    <header style="position: fixed; top: 0; left: 0; right: 0; background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0;">
+    <header class="header">
         <div class="container">
-            <div style="display: flex; justify-content: center; align-items: center;">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ctext x='20' y='40' font-family='Arial, sans-serif' font-size='32' font-weight='bold'%3E%3Ctspan fill='%23ff6b35'%3En%3C/tspan%3E%3Ctspan fill='white'%3Eexo%3C/tspan%3E%3C/text%3E%3C/svg%3E" alt="Nexo" style="height: 40px;">
+            <div class="header-content">
+                <div class="logo-container">
+                    <span class="logo-n">n</span><span class="logo-exo">exo</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="hero" style="padding-top: 80px;">
+    <section class="hero" style="padding-top: 140px;">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -438,7 +493,7 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="logo">nexo</div>
+            <div class="logo-nexo">nexo</div>
             <p style="margin-top: 10px;">Desenvolvido por <strong>Exodo</strong></p>
             <p style="margin-top: 20px; opacity: 0.7;">© 2025 Sistema Nexo. Todos os direitos reservados.</p>
         </div>
