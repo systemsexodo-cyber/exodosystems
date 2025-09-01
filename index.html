@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<link rel="stylesheet" href="style.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Nexo - Êxodo</title>
@@ -15,7 +17,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: #ffffff;
-            background: #1a1a1a;
+            background: #000000;
             overflow-x: hidden;
         }
 
@@ -28,7 +30,7 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
             position: relative;
             display: flex;
             align-items: center;
@@ -43,7 +45,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,138,0,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(218,165,32,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
             animation: float 20s ease-in-out infinite;
         }
 
@@ -61,7 +63,7 @@
         .company-name {
             font-size: 2rem;
             font-weight: 300;
-            color: rgba(255,138,0,0.8);
+            color: rgba(218,165,32,0.8);
             margin-bottom: 0.5rem;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -70,13 +72,13 @@
         .system-name {
             font-size: 6rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #FF8A00, #FFA500, #FF7F00, #FF8A00);
+            background: linear-gradient(45deg, #DAA520, #FFD700, #FFA500, #DAA520);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradient-shift 3s ease-in-out infinite;
             margin-bottom: 1rem;
-            text-shadow: 0 0 30px rgba(255,138,0,0.3);
+            text-shadow: 0 0 30px rgba(218,165,32,0.3);
         }
 
         @keyframes gradient-shift {
@@ -90,7 +92,7 @@
             margin-bottom: 1.5rem;
             opacity: 0;
             animation: fadeInUp 1s ease-out 0.5s forwards;
-            background: linear-gradient(45deg, #ffffff, #FF8A00);
+            background: linear-gradient(45deg, #ffffff, #DAA520);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -121,8 +123,8 @@
         .cta-button {
             display: inline-block;
             padding: 20px 50px;
-            background: linear-gradient(45deg, #FF8A00, #FFA500);
-            color: #ffffff;
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            color: #000000;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.2rem;
@@ -134,7 +136,6 @@
             overflow: hidden;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border: 2px solid #FF8A00;
         }
 
         .cta-button::before {
@@ -144,7 +145,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: left 0.5s;
         }
 
@@ -154,14 +155,13 @@
 
         .cta-button:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255,138,0,0.4);
-            border-color: #FFA500;
+            box-shadow: 0 15px 40px rgba(218,165,32,0.4);
         }
 
         /* Features Section */
         .features {
             padding: 120px 0;
-            background: #222222;
+            background: #111111;
             position: relative;
         }
 
@@ -172,7 +172,7 @@
             left: 50%;
             width: 2px;
             height: 100%;
-            background: linear-gradient(to bottom, transparent, #FF8A00, transparent);
+            background: linear-gradient(to bottom, transparent, #DAA520, transparent);
             transform: translateX(-50%);
         }
 
@@ -181,7 +181,7 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #FF8A00, #FFA500);
+            background: linear-gradient(45deg, #DAA520, #FFD700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -201,12 +201,12 @@
         }
 
         .feature-card {
-            background: linear-gradient(135deg, rgba(255,138,0,0.08), rgba(34,34,34,0.9));
+            background: linear-gradient(135deg, rgba(218,165,32,0.1), rgba(0,0,0,0.8));
             padding: 40px 30px;
             border-radius: 20px;
             text-align: center;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,138,0,0.2);
+            border: 2px solid rgba(218,165,32,0.2);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -219,7 +219,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #FF8A00, #FFA500, #FF7F00);
+            background: linear-gradient(90deg, #DAA520, #FFD700, #FFA500);
             transform: translateX(-100%);
             transition: transform 0.6s ease;
         }
@@ -230,29 +230,29 @@
 
         .feature-card:hover {
             transform: translateY(-15px);
-            background: linear-gradient(135deg, rgba(255,138,0,0.15), rgba(34,34,34,0.95));
-            border-color: rgba(255,138,0,0.5);
-            box-shadow: 0 20px 40px rgba(255,138,0,0.2);
+            background: linear-gradient(135deg, rgba(218,165,32,0.2), rgba(0,0,0,0.9));
+            border-color: rgba(218,165,32,0.5);
+            box-shadow: 0 20px 40px rgba(218,165,32,0.2);
         }
 
         .feature-icon {
             width: 90px;
             height: 90px;
             margin: 0 auto 25px;
-            background: linear-gradient(45deg, #FF8A00, #FFA500);
+            background: linear-gradient(45deg, #DAA520, #FFD700);
             border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2.5rem;
-            color: #ffffff;
+            color: #000000;
             font-weight: bold;
         }
 
         .feature-card h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            color: #FF8A00;
+            color: #DAA520;
             font-weight: 600;
         }
 
@@ -265,7 +265,7 @@
         /* Stats Section */
         .stats {
             padding: 100px 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
             position: relative;
         }
 
@@ -276,7 +276,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><defs><pattern id="hexagon" width="60" height="60" patternUnits="userSpaceOnUse"><polygon points="30,5 50,17 50,43 30,55 10,43 10,17" fill="none" stroke="rgba(255,138,0,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23hexagon)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><defs><pattern id="hexagon" width="60" height="60" patternUnits="userSpaceOnUse"><polygon points="30,5 50,17 50,43 30,55 10,43 10,17" fill="none" stroke="rgba(218,165,32,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23hexagon)"/></svg>');
             opacity: 0.3;
         }
 
@@ -291,14 +291,14 @@
         .stat-item {
             text-align: center;
             padding: 30px;
-            background: rgba(255,138,0,0.08);
+            background: rgba(218,165,32,0.1);
             border-radius: 20px;
-            border: 1px solid rgba(255,138,0,0.3);
+            border: 1px solid rgba(218,165,32,0.3);
             transition: all 0.3s ease;
         }
 
         .stat-item:hover {
-            background: rgba(255,138,0,0.12);
+            background: rgba(218,165,32,0.15);
             transform: scale(1.05);
         }
 
@@ -306,7 +306,7 @@
             font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 15px;
-            background: linear-gradient(45deg, #FF8A00, #FFA500);
+            background: linear-gradient(45deg, #DAA520, #FFD700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -320,7 +320,7 @@
         /* Final CTA Section */
         .final-cta {
             padding: 120px 0;
-            background: #1a1a1a;
+            background: #000000;
             text-align: center;
             position: relative;
         }
@@ -332,14 +332,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at center, rgba(255,138,0,0.08), transparent);
+            background: radial-gradient(circle at center, rgba(218,165,32,0.1), transparent);
         }
 
         .final-cta h2 {
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 25px;
-            background: linear-gradient(45deg, #FF8A00, #FFA500);
+            background: linear-gradient(45deg, #DAA520, #FFD700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             position: relative;
@@ -363,8 +363,8 @@
             position: absolute;
             width: 120px;
             height: 120px;
-            background: linear-gradient(45deg, rgba(255,138,0,0.08), rgba(255,165,0,0.04));
-            border: 1px solid rgba(255,138,0,0.2);
+            background: linear-gradient(45deg, rgba(218,165,32,0.1), rgba(255,215,0,0.05));
+            border: 1px solid rgba(218,165,32,0.2);
             border-radius: 50%;
             animation: floating 8s ease-in-out infinite;
         }
@@ -446,29 +446,13 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, #FF8A00, #FFA500);
+            background: linear-gradient(90deg, #DAA520, #FFD700);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 0.7; }
             50% { opacity: 1; }
-        }
-
-        /* Logo Style */
-        .nexo-logo {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            font-weight: 600;
-            font-size: inherit;
-            letter-spacing: -0.02em;
-        }
-
-        .nexo-logo .n-letter {
-            color: #FF8A00;
-        }
-
-        .nexo-logo .other-letters {
-            color: #ffffff;
         }
     </style>
 </head>
@@ -482,9 +466,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="company-name">Êxodo</div>
-                <div class="system-name nexo-logo">
-                    <span class="n-letter">n</span><span class="other-letters">exo</span>
-                </div>
+                <div class="system-name">NEXO</div>
                 <h1>O Sistema que <span class="nexo-highlight">Revoluciona</span> Empresas</h1>
                 <p>Transforme sua operação com a plataforma mais avançada do mercado. Nexo combina inteligência artificial, automação e analytics em uma solução única.</p>
                 <a href="#contato" class="cta-button">Descobrir o Nexo</a>
@@ -505,16 +487,19 @@
                     <p>O Nexo processa milhões de dados em segundos, entregando insights instantâneos que aceleram sua tomada de decisão em até 500%.</p>
                 </div>
                 
+                
+                
                 <div class="feature-card">
                     <div class="feature-icon">🧠</div>
                     <h3>IA Proprietária</h3>
                     <p>Nossa inteligência artificial exclusiva aprende com seu negócio, automatizando processos complexos de forma inteligente e adaptativa.</p>
                 </div>
                 
+                
+                
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
                     <h3>Suporte Premium</h3>
-                    <p>Equipe especializada disponível 24/7 para garantir que sua empresa extraia o máximo potencial da plataforma Nexo.</p>
                 </div>
             </div>
         </div>
@@ -529,19 +514,10 @@
                     <div class="stat-label">Empresas Transformadas</div>
                 </div>
                 
-                <div class="stat-item">
-                    <div class="stat-number">500%</div>
-                    <div class="stat-label">Aumento de Performance</div>
                 </div>
-                
                 <div class="stat-item">
                     <div class="stat-number">45min</div>
                     <div class="stat-label">Tempo de Implementação</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Suporte Especializado</div>
                 </div>
             </div>
         </div>
@@ -614,9 +590,6 @@
             } else if (text.includes('min')) {
                 suffix = 'min';
                 increment = target / 50;
-            } else if (text.includes('/')) {
-                element.textContent = text;
-                return;
             } else {
                 increment = target / 100;
             }
@@ -637,10 +610,8 @@
                 if (entry.isIntersecting) {
                     const number = entry.target.querySelector('.stat-number');
                     const text = number.textContent;
-                    if (!text.includes('/')) {
-                        const value = parseInt(text.replace(/[^0-9]/g, ''));
-                        animateCounter(number, value);
-                    }
+                    const value = parseInt(text.replace(/[^0-9]/g, ''));
+                    animateCounter(number, value);
                     statsObserver.unobserve(entry.target);
                 }
             });
@@ -669,8 +640,8 @@
             
             setInterval(() => {
                 systemName.style.textShadow = `
-                    0 0 30px rgba(255,138,0,${Math.random() * 0.5 + 0.3}),
-                    0 0 60px rgba(255,165,0,${Math.random() * 0.3 + 0.1})
+                    0 0 30px rgba(218,165,32,${Math.random() * 0.5 + 0.3}),
+                    0 0 60px rgba(255,215,0,${Math.random() * 0.3 + 0.1})
                 `;
             }, 2000);
         });
