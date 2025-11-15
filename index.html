@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-s
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Nexo - Cardápio Digital e Gestão Empresarial</title>
+    <title>Sistema Nexo - IA + Gestão Empresarial Completa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,21 +14,128 @@ s
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #ff6b35;
+            --secondary: #f9ca24;
+            --dark: #000000;
+            --dark-gray: #111111;
+            --light-gray: #1a1a1a;
+            --text-light: rgba(255, 255, 255, 0.7);
+            --text-white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--secondary), var(--primary));
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-white);
             overflow-x: hidden;
+            background: var(--dark);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            z-index: 1000;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.05em;
+            animation: logoFloat 6s ease-in-out infinite;
+            position: relative;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .logo-n {
+            color: var(--primary);
+            font-weight: 200;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.5));
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .logo-exo {
+            color: var(--text-white);
+            font-weight: 100;
+            opacity: 0.95;
         }
 
         .hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
+            background: radial-gradient(ellipse at center, #0a0a0a 0%, var(--dark) 70%);
+            color: var(--text-white);
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 120px;
         }
 
         .hero::before {
@@ -36,19 +145,21 @@ s
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="25" cy="25" r="1" fill="%23ff6b35" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ff6b35" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="%23ff6b35" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            animation: float 20s ease-in-out infinite;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(249, 202, 36, 0.03) 0%, transparent 50%);
+            animation: subtlePulse 15s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
+        @keyframes subtlePulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
             position: relative;
             z-index: 2;
         }
@@ -56,44 +167,47 @@ s
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 80px;
             align-items: center;
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff6b35, #f9ca24);
+            font-size: 5rem;
+            font-weight: 200;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--text-white), var(--primary), var(--text-white));
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.3)); }
-            to { filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.6)); }
+            background-clip: text;
+            animation: gradientFlow 8s ease-in-out infinite;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
         }
 
         .hero-text p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            color: #ddd;
+            font-size: 1.25rem;
+            margin-bottom: 45px;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-weight: 300;
+            max-width: 550px;
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(45deg, #ff6b35, #f9ca24);
-            color: white;
-            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-white);
+            padding: 22px 50px;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            font-weight: 600;
+            font-size: 1.15rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(255, 107, 53, 0.3);
         }
 
         .cta-button::before {
@@ -103,8 +217,8 @@ s
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
         }
 
         .cta-button:hover::before {
@@ -112,8 +226,8 @@ s
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
         }
 
         .hero-visual {
@@ -126,53 +240,90 @@ s
         .phone-mockup {
             width: 300px;
             height: 600px;
-            background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+            background: linear-gradient(145deg, #1a1a1a, var(--dark));
             border-radius: 40px;
-            padding: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            padding: 25px;
+            box-shadow: 
+                0 25px 70px rgba(0,0,0,0.9),
+                0 0 0 2px rgba(255, 255, 255, 0.08),
+                inset 0 0 50px rgba(255, 107, 53, 0.1);
             position: relative;
-            animation: phoneFloat 3s ease-in-out infinite;
+            animation: phoneFloat 8s ease-in-out infinite;
         }
 
         @keyframes phoneFloat {
-            0%, 100% { transform: translateY(0px) rotate(-2deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
         }
 
         .phone-screen {
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, #ff6b35, #f9ca24);
+            background: linear-gradient(180deg, var(--primary), #1a1a1a, var(--dark));
             border-radius: 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-weight: bold;
+            color: var(--text-white);
+            font-weight: 300;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.05), transparent);
+            animation: screenShine 12s linear infinite;
+        }
+
+        @keyframes screenShine {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .features {
-            padding: 100px 0;
-            background: #f8f9fa;
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--dark-gray) 50%, var(--dark) 100%);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 60px;
         }
 
         .feature-card {
-            background: white;
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 40px 30px;
-            border-radius: 20px;
+            border-radius: 24px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.6),
+                0 0 0 1px rgba(255, 107, 53, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .feature-card::before {
@@ -181,178 +332,390 @@ s
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(45deg, #ff6b35, #f9ca24);
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            box-shadow: 
+                0 25px 60px rgba(0,0,0,0.8),
+                0 0 0 1px rgba(255, 107, 53, 0.3),
+                0 0 40px rgba(255, 107, 53, 0.2);
+            background: rgba(20, 20, 20, 0.95);
         }
 
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(45deg, #ff6b35, #f9ca24);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
+            margin: 0 auto 25px;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.6);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 300;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #333;
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: var(--text-white);
+            font-weight: 200;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
         }
 
         .section-subtitle {
             text-align: center;
             font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 40px auto 0;
+            line-height: 1.8;
+            font-weight: 300;
         }
 
         .stats {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-            color: white;
-            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-gray), #2a2a2a, var(--light-gray));
+            color: var(--text-white);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stats-pattern" patternUnits="userSpaceOnUse" width="50" height="50"><circle cx="25" cy="25" r="2" fill="%23ff6b35" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23stats-pattern)"/></svg>');
+            animation: patternMove 25s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes patternMove {
+            from { transform: translateX(0); }
+            to { transform: translateX(50px); }
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
             text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            padding: 40px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(255, 107, 53, 0.3);
+            border-color: rgba(255, 107, 53, 0.3);
         }
 
         .stat-item h3 {
-            font-size: 3rem;
-            color: #ff6b35;
-            margin-bottom: 10px;
+            font-size: 4.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 400;
         }
 
         .cta-section {
-            background: linear-gradient(45deg, #ff6b35, #f9ca24);
-            color: white;
-            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease-in-out infinite;
+            color: var(--text-white);
+            padding: 120px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: ctaPulse 5s ease-in-out infinite;
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .whatsapp-button {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: #25d366;
-            color: white;
-            padding: 20px 40px;
+            gap: 15px;
+            background: linear-gradient(135deg, #25d366, #20b358);
+            color: var(--text-white);
+            padding: 25px 50px;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-top: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .whatsapp-button:hover::before {
+            left: 100%;
         }
 
         .whatsapp-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 18px 45px rgba(37, 211, 102, 0.6);
         }
 
         .footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 40px 0;
+            background: linear-gradient(180deg, #0a0a0a, var(--light-gray));
+            color: var(--text-white);
+            padding: 80px 0;
             text-align: center;
+            position: relative;
         }
 
-        .header {
-            position: fixed;
+        .footer::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 25px 0;
-            border-bottom: 2px solid rgba(255, 107, 53, 0.3);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo-container {
-            font-family: 'Arial', sans-serif;
-            font-size: 4rem;
-            font-weight: bold;
-            animation: logoFloat 3s ease-in-out infinite, logoGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-
-        @keyframes logoGlow {
-            from { 
-                filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.5));
-                transform: scale(1);
-            }
-            to { 
-                filter: drop-shadow(0 0 25px rgba(255, 107, 53, 0.8));
-                transform: scale(1.05);
-            }
-        }
-
-        .logo-n {
-            color: #ff6b35;
-        }
-
-        .logo-exo {
-            color: white;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
         .logo-nexo {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 107, 53, 0.7);
+            border-radius: 50%;
+            animation: particleFloat 20s linear infinite;
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--text-light);
+            text-align: center;
+            z-index: 10;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-8px) translateX(-50%);
+            }
+        }
+
+        .scroll-indicator div:first-child {
             font-size: 2rem;
-            font-weight: bold;
-            color: #ff6b35;
+            margin-bottom: 8px;
+        }
+
+        .scroll-indicator div:last-child {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Animations on scroll */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+            }
+            
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
         }
 
         @media (max-width: 768px) {
             .logo-container {
-                font-size: 3rem;
-            }
-            
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-text h1 {
                 font-size: 2.5rem;
             }
             
-            .phone-mockup {
-                width: 250px;
-                height: 500px;
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
             }
             
-            .features-grid {
+            .phone-mockup {
+                width: 260px;
+                height: 540px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .stats-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem !important;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem !important;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
@@ -362,91 +725,98 @@ s
         </div>
     </header>
 
-    <section class="hero" style="padding-top: 140px;">
+    <section class="hero">
+        <div class="particles" id="particles"></div>
+        
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="hero-text fade-in-up">
                     <h1>Sistema Nexo</h1>
                     <p>Sistema completo em nuvem com IA integrada para gestão empresarial: PDV inteligente, NFC-e, cardápio digital, gerenciamento automatizado de pedidos e muito mais. Tecnologia de ponta para todos os tipos de negócio!</p>
-                    <a href="#contato" class="cta-button">Quero Conhecer o Sistema</a>
+                    <a href="#contato" class="cta-button">🚀 Quero Conhecer o Sistema</a>
                 </div>
-                <div class="hero-visual">
+                <div class="hero-visual fade-in-up">
                     <div class="phone-mockup">
                         <div class="phone-screen">
-                            <div style="font-size: 1.5rem; margin-bottom: 20px;">🤖</div>
-                            <div>Sistema Nexo</div>
-                            <div style="font-size: 0.8rem; margin-top: 10px;">IA • PDV • NFC-e • Gestão</div>
+                            <div style="font-size: 2.5rem; margin-bottom: 25px; position: relative; z-index: 3;">🤖</div>
+                            <div style="position: relative; z-index: 3; font-size: 1.8rem; font-weight: 300;">Sistema Nexo</div>
+                            <div style="font-size: 1rem; margin-top: 20px; position: relative; z-index: 3; opacity: 0.9;">IA • PDV • NFC-e • Gestão</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <div class="scroll-indicator">
+            <div>⬇</div>
+            <div>Role para descobrir mais</div>
+        </div>
     </section>
 
     <section class="features">
         <div class="container">
-            <h2 class="section-title">Sistema Completo com IA Integrada</h2>
-            <p class="section-subtitle">Tecnologia de ponta com inteligência artificial que revoluciona a gestão do seu negócio</p>
+            <h2 class="section-title fade-in-up">Sistema Completo com IA Integrada</h2>
+            <p class="section-subtitle fade-in-up">Tecnologia de ponta com inteligência artificial que revoluciona a gestão do seu negócio de forma inteligente e automatizada</p>
             
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">🤖</div>
                     <h3>IA Integrada</h3>
-                    <p>Inteligência artificial que otimiza o seu negócio fazendo você ganhar tempo.</p>
+                    <p>Inteligência artificial que otimiza vendas, sugere produtos automaticamente, analisa padrões de consumo e automatiza processos complexos do seu negócio.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">💻</div>
-                    <h3>PDV Completo</h3>
-                    <p>Sistema de ponto de venda moderno e intuitivo. Vendas rápidas, controle de caixa e relatórios detalhados em tempo real.</p>
+                    <h3>PDV Inteligente</h3>
+                    <p>Sistema de ponto de venda ultramoderno e intuitivo. Vendas rápidas, controle de caixa avançado e relatórios detalhados em tempo real.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">📄</div>
-                    <h3>NFC-e Integrada</h3>
-                    <p>Emissão de nota fiscal eletrônica. Totalmente em nuvem e de qualquer lugar. Arquivos fiscal xml em nuvem. </p>
+                    <h3>NFC-e Automática</h3>
+                    <p>Emissão automática de nota fiscal eletrônica. Totalmente integrado com a Receita Federal e em total conformidade com a legislação brasileira.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">📱</div>
-                    <h3>Cardápio Digital</h3>
-                    <p>Cardápio online interativo para restaurantes e lanchonetes. Pedidos direto pelo WhatsApp e delivery integrado.</p>
+                    <h3>Cardápio Digital Interativo</h3>
+                    <p>Cardápio online responsivo para restaurantes e lanchonetes. Pedidos direto pelo WhatsApp, delivery integrado e experiência premium.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">📋</div>
-                    <h3>Gestão de Pedidos</h3>
-                    <p>Controle completo de pedidos: balcão, delivery, drive-thru. Acompanhe status e otimize seu atendimento.</p>
+                    <h3>Gestão Total de Pedidos</h3>
+                    <p>Controle completo de pedidos: balcão, delivery, drive-thru e take-away. Acompanhe status em tempo real e otimize seu atendimento.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">📊</div>
                     <h3>Relatórios com IA</h3>
-                    <p>Dashboards inteligentes, análise preditiva de vendas, insights automáticos e relatórios que ajudam na tomada de decisões estratégicas.</p>
+                    <p>Dashboards inteligentes com análise preditiva de vendas, insights automáticos e relatórios que realmente ajudam nas decisões estratégicas.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">☁️</div>
                     <h3>100% em Nuvem</h3>
-                    <p>Acesse de qualquer lugar, sincronização automática, backup seguro e atualizações constantes sem complicação.</p>
+                    <p>Acesse de qualquer lugar do mundo, sincronização automática instantânea, backup seguro na nuvem e atualizações constantes.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">🏪</div>
-                    <h3>Multi-Negócios</h3>
-                    <p>Restaurantes, lojas, farmácias, mercados, oficinas. O Nexo se adapta ao seu tipo de negócio.</p>
+                    <h3>Multi-Segmentos</h3>
+                    <p>Restaurantes, lojas, farmácias, mercados, oficinas, clínicas e muito mais. O Nexo se adapta perfeitamente ao seu tipo de negócio.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">📦</div>
-                    <h3>Controle de Estoque</h3>
-                    <p>Gestão completa de produtos, controle de entrada e saída, alertas de estoque baixo e muito mais.</p>
+                    <h3>Estoque Inteligente</h3>
+                    <p>Gestão completa de produtos com IA, controle automático de entrada e saída, alertas inteligentes de estoque baixo e previsão de demanda.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-in-up">
                     <div class="feature-icon">⚡</div>
-                    <h3>Implantação Rápida</h3>
-                    <p>Sistema funcionando em apenas 1 hora! Nossa equipe cuida de toda a configuração e treinamento.</p>
+                    <h3>Implantação Express</h3>
+                    <p>Sistema funcionando em apenas 1 hora! Nossa equipe especializada cuida de toda a configuração, migração e treinamento completo.</p>
                 </div>
             </div>
         </div>
@@ -455,13 +825,13 @@ s
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item">
+                <div class="stat-item fade-in-up">
                     <h3>1h</h3>
-                    <p>Tempo de implantação</p>
+                    <p>Tempo de implantação total</p>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item fade-in-up">
                     <h3>100%</h3>
-                    <p>Sistema em nuvem</p>
+                    <p>Sistema em nuvem segura</p>
                 </div>
             </div>
         </div>
@@ -469,16 +839,16 @@ s
 
     <section class="cta-section" id="contato">
         <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Pronto para ter IA no seu negócio?</h2>
-            <p style="font-size: 1.3rem; margin-bottom: 10px;">Sistema completo com inteligência artificial - Implantação em apenas 1 hora!</p>
-            <p style="font-size: 1.1rem;">Entre em contato conosco agora e descubra como o Sistema Nexo com IA pode transformar sua empresa, independente do seu segmento.</p>
+            <h2 style="font-size: 3rem; margin-bottom: 30px; position: relative; z-index: 2; font-weight: 200;">Pronto para ter IA no seu negócio?</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 20px; position: relative; z-index: 2; font-weight: 300;">Sistema completo com inteligência artificial - Implantação em apenas 1 hora!</p>
+            <p style="font-size: 1.25rem; position: relative; z-index: 2; font-weight: 300; opacity: 0.95;">Entre em contato conosco agora e descubra como o Sistema Nexo com IA pode transformar sua empresa, independente do seu segmento.</p>
             
             <a href="https://wa.me/5512996435372?text=Olá! Gostaria de conhecer o Sistema Nexo e saber mais sobre a implantação para meu negócio." class="whatsapp-button">
-                <span style="font-size: 1.5rem;">📱</span>
+                <span style="font-size: 2rem;">📱</span>
                 Falar no WhatsApp
             </a>
             
-            <div style="margin-top: 20px; font-size: 1rem; opacity: 0.9;">
+            <div style="margin-top: 30px; font-size: 1.2rem; opacity: 0.95; position: relative; z-index: 2; font-weight: 400;">
                 📞 (12) 99643-5372
             </div>
         </div>
@@ -487,46 +857,123 @@ s
     <footer class="footer">
         <div class="container">
             <div class="logo-nexo">nexo</div>
-            <p style="margin-top: 10px;">Desenvolvido por <strong>Exodo</strong></p>
-            <p style="margin-top: 20px; opacity: 0.7;">© 2025 Sistema Nexo. Todos os direitos reservados.</p>
+            <p style="margin-top: 20px; font-size: 1.2rem; font-weight: 300;">Desenvolvido por <strong style="font-weight: 600;">Exodo</strong></p>
+            <p style="margin-top: 30px; opacity: 0.6; font-size: 0.95rem; font-weight: 300;">© 2025 Sistema Nexo. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
         // Smooth scrolling para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
 
-        // Animação de entrada dos elementos
+        // Intersection Observer para animações
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        // Aplicar animação aos cards
-        document.querySelectorAll('.feature-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
-            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
+        // Observar todos os elementos com fade-in-up
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
         });
+
+        // Criar partículas dinâmicas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
+            const particleCount = 12;
+            
+            for (let i = 0; i < particleCount; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 5 + 's';
+                    particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                    particle.style.background = Math.random() > 0.5 
+                        ? 'rgba(255, 107, 53, 0.7)' 
+                        : 'rgba(249, 202, 36, 0.5)';
+                    particle.style.width = (4 + Math.random() * 3) + 'px';
+                    particle.style.height = particle.style.width;
+                    
+                    particlesContainer.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.remove();
+                        }
+                    }, 25000);
+                }, i * 2000);
+            }
+            
+            // Continuar criando partículas
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = '0s';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particle.style.background = Math.random() > 0.5 
+                    ? 'rgba(255, 107, 53, 0.7)' 
+                    : 'rgba(249, 202, 36, 0.5)';
+                particle.style.width = (4 + Math.random() * 3) + 'px';
+                particle.style.height = particle.style.width;
+                
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.remove();
+                    }
+                }, 25000);
+            }, 3000);
+        }
+
+        createParticles();
+
+        // Performance: Throttle scroll events
+        let ticking = false;
+        
+        function updateOnScroll() {
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateOnScroll);
+                ticking = true;
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
-
-
